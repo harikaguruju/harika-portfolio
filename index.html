@@ -7,11 +7,11 @@
   <meta name="description" content="Harika Guruju — Machine Learning, NLP, RAG and Data Science Portfolio" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style.css"> <!-- external css -->
+  <link rel="stylesheet" href="style.css?v=1"> <!-- cache-bust -->
   <script>
     (() => {
       const t = localStorage.getItem("theme");
-      if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)').matches)) {
+      if (t === "dark" || (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
         document.documentElement.classList.add("dark");
       } else {
         document.documentElement.classList.remove("dark");
@@ -26,9 +26,10 @@
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <a href="#home" class="font-semibold">Harika Guruju</a>
       <div class="hidden sm:flex items-center gap-6 text-sm">
+        <!-- Reordered -->
+        <a href="#experience" class="hover:opacity-80">Experience</a>
         <a href="#projects" class="hover:opacity-80">Projects</a>
         <a href="#skills" class="hover:opacity-80">Skills</a>
-        <a href="#experience" class="hover:opacity-80">Experience</a>
         <a href="#education" class="hover:opacity-80">Education</a>
         <a href="#contact" class="hover:opacity-80">Contact</a>
       </div>
@@ -41,6 +42,7 @@
     <h1 class="text-4xl md:text-5xl font-extrabold">AI/ML Engineer & Data Scientist</h1>
     <p class="mt-4 text-neutral-700 dark:text-neutral-300 leading-relaxed">
       I build <b>RAG systems</b>, <b>NLP pipelines</b>, and <b>analytics apps</b> — from ingestion to deployment.
+      Recently shipped a <b>voice-first Q&amp;A chatbot</b> on Hugging Face Spaces.
     </p>
     <div class="mt-6 flex flex-wrap gap-3">
       <a href="resume.pdf" download class="px-4 py-2 rounded-xl bg-black text-white dark:bg-white dark:text-black">Download CV</a>
@@ -48,32 +50,76 @@
     </div>
   </header>
 
+  <!-- EXPERIENCE (moved above Projects) -->
+  <section id="experience" class="max-w-6xl mx-auto px-4 py-8">
+    <h2 class="text-2xl font-bold mb-4">Experience</h2>
+    <!-- Update with real items when ready -->
+    <p><b>Business Analyst Intern – Vibe Store</b> (Mar–May 2025)</p>
+    <ul class="list-disc pl-5 mt-2 text-sm">
+      <li>Automated sales reports using Shiprocket, SQL, and Tableau; partnered with 25+ institutions to boost reach and revenue.</li>
+    </ul>
+  </section>
+
   <!-- PROJECTS -->
   <section id="projects" class="max-w-6xl mx-auto px-4 py-8">
     <h2 class="text-2xl font-bold mb-4">Projects</h2>
     <div class="grid md:grid-cols-2 gap-6">
 
-      <!-- RAG Project -->
+      <!-- Voice Web Chatbot -->
+      <article class="rounded-2xl border p-5 bg-white dark:bg-neutral-900">
+        <h3 class="font-semibold text-lg">Voice Web Chatbot (Mic Q&amp;A with Web Search &amp; TTS)</h3>
+        <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
+          NLP, Speech, Information Retrieval • Tools: Python, Gradio, DDGS, Trafilatura, BeautifulSoup, gTTS
+        </p>
+        <ul class="list-disc pl-5 mt-2 text-sm">
+          <li>Voice-first assistant that records queries, fixes typos, searches the web, summarizes, and speaks answers.</li>
+          <li>Retrieval pipeline using DDGS + Trafilatura/BS4 + extractive ranking with source attribution.</li>
+          <li>Pause / resume / stop TTS controls with clean summarization.</li>
+          <li>Deployed on Hugging Face Spaces with reproducible repo + push-to-deploy workflow.</li>
+        </ul>
+        <div class="mt-3 flex gap-3 text-sm">
+          <a class="link-btn" href="https://huggingface.co/spaces/harikaguruju/voice-web-chatbot" target="_blank" rel="noopener noreferrer">Live App</a>
+          <a class="link-btn" href="https://github.com/harikaguruju/Voice-Web-Chatbot-" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Financial Analysis RAG (no links provided) -->
       <article class="rounded-2xl border p-5 bg-white dark:bg-neutral-900">
         <h3 class="font-semibold text-lg">Financial Analysis RAG with Time-Series Data</h3>
         <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
           Finance, RAG, Time-Series • Tools: Python, Streamlit, ChromaDB
         </p>
         <ul class="list-disc pl-5 mt-2 text-sm">
-          <li>Semantic retrieval over market facts + OHLCV charts with SMA overlays.</li>
-          <li>Stored 580+ facts across 7 tickers in ChromaDB.</li>
-          <li>Deployed on Streamlit Cloud with caching + SQLite patch.</li>
+          <li>Semantic retrieval over market facts with interactive OHLCV charts and SMA overlays.</li>
+          <li>Stored 580+ facts across 7 tickers in ChromaDB; deployed on Streamlit Cloud with caching + SQLite patch.</li>
         </ul>
+        <div class="mt-3 flex gap-3 text-sm">
+          <span class="text-neutral-500">Repo / Live: add links if available</span>
+        </div>
       </article>
 
-      <!-- OCR Project -->
+      <!-- OCR Handwriting Recognition -->
       <article class="rounded-2xl border p-5 bg-white dark:bg-neutral-900">
         <h3 class="font-semibold text-lg">OCR Handwriting Recognition using TrOCR</h3>
         <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">NLP • PyTorch, HF Transformers</p>
         <ul class="list-disc pl-5 mt-2 text-sm">
-          <li>Fine-tuned TrOCR on IAM dataset (6.3% CER, 14.3% WER).</li>
-          <li>Built OCR pipeline with preprocessing and transformer model.</li>
+          <li>Fine-tuned TrOCR on IAM dataset (6.3% CER, 14.3% WER) with preprocessing pipeline.</li>
         </ul>
+        <div class="mt-3 flex gap-3 text-sm">
+          <a class="link-btn" href="https://github.com/harikaguruju/OCR-Handwriting-Recognition" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </article>
+
+      <!-- Zomato EDA -->
+      <article class="rounded-2xl border p-5 bg-white dark:bg-neutral-900">
+        <h3 class="font-semibold text-lg">Zomato EDA — Insights &amp; Forecasting</h3>
+        <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">Data Analysis • Pandas, Seaborn</p>
+        <ul class="list-disc pl-5 mt-2 text-sm">
+          <li>Analyzed 3k+ records; visualized demand patterns and ran forecasting experiments.</li>
+        </ul>
+        <div class="mt-3 flex gap-3 text-sm">
+          <a class="link-btn" href="https://github.com/harikaguruju/Zomato-EDA" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
       </article>
 
       <!-- AutoScout24 -->
@@ -81,17 +127,11 @@
         <h3 class="font-semibold text-lg">AutoScout24 Car Price Prediction</h3>
         <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">Machine Learning • Scikit-learn, Pandas</p>
         <ul class="list-disc pl-5 mt-2 text-sm">
-          <li>Cleaned & processed 15k+ listings; achieved R²≈0.896 using Ridge/Lasso.</li>
+          <li>Cleaned &amp; processed 15k+ listings; achieved R²≈0.896 using Ridge/Lasso.</li>
         </ul>
-      </article>
-
-      <!-- Swiggy EDA -->
-      <article class="rounded-2xl border p-5 bg-white dark:bg-neutral-900">
-        <h3 class="font-semibold text-lg">EDA on Swiggy Dataset</h3>
-        <p class="text-xs text-neutral-600 dark:text-neutral-400 mt-1">Data Analysis • Pandas, Seaborn</p>
-        <ul class="list-disc pl-5 mt-2 text-sm">
-          <li>Analyzed 3k+ records; revealed customer trends and built 70% accurate forecasting models.</li>
-        </ul>
+        <div class="mt-3 flex gap-3 text-sm">
+          <span class="text-neutral-500">Repo: add link (optional)</span>
+        </div>
       </article>
 
     </div>
@@ -101,16 +141,6 @@
   <section id="skills" class="max-w-6xl mx-auto px-4 py-8">
     <h2 class="text-2xl font-bold mb-4">Skills</h2>
     <p>Python • PyTorch • TensorFlow • Streamlit • SQL • Tableau • NLP • LLMs</p>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience" class="max-w-6xl mx-auto px-4 py-8">
-    <h2 class="text-2xl font-bold mb-4">Experience</h2>
-    <p><b>Business Analyst Intern – Vibe Store</b> (Mar–May 2025)</p>
-    <ul class="list-disc pl-5 mt-2 text-sm">
-      <li>Automated sales reports using Shiprocket, SQL, Tableau.</li>
-      <li>Secured 25+ institutional partnerships, boosting visibility & revenue.</li>
-    </ul>
   </section>
 
   <!-- EDUCATION -->
@@ -126,9 +156,9 @@
     <h2 class="text-2xl font-bold mb-4">Contact</h2>
     <ul>
       <li>Email: <a href="mailto:guruju.harika000@gmail.com">guruju.harika000@gmail.com</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/harika-guruju" target="_blank">linkedin.com/in/harika-guruju</a></li>
-      <li>GitHub: <a href="https://github.com/harikaguruju" target="_blank">github.com/harikaguruju</a></li>
-      <li>LeetCode: <a href="https://leetcode.com/u/harikaguruju/" target="_blank">leetcode.com/u/harikaguruju</a></li>
+      <li>LinkedIn: <a href="https://www.linkedin.com/in/harika-guruju" target="_blank" rel="noopener noreferrer">linkedin.com/in/harika-guruju</a></li>
+      <li>GitHub: <a href="https://github.com/harikaguruju" target="_blank" rel="noopener noreferrer">github.com/harikaguruju</a></li>
+      <li>LeetCode: <a href="https://leetcode.com/u/harikaguruju/" target="_blank" rel="noopener noreferrer">leetcode.com/u/harikaguruju</a></li>
     </ul>
   </section>
 
